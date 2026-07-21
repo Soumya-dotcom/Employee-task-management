@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* ===========================
-   Design tokens
+   Design Tokens
 =========================== */
 :root {
     --color-bg: #F4F6F5;
@@ -31,7 +31,11 @@
     --font-body: 'Inter', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
 body {
     font-family: var(--font-body);
@@ -42,7 +46,7 @@ body {
 }
 
 /* ===========================
-   Logo mark (used in sidebar + login)
+   Logo Mark
 =========================== */
 .logo-mark {
     display: flex;
@@ -71,7 +75,7 @@ body {
 }
 
 /* ===========================
-   Login page
+   Login Page
 =========================== */
 .login-body {
     min-height: 100vh;
@@ -210,12 +214,13 @@ form input:focus, form select:focus, form textarea:focus {
 .btn-danger:hover { background: var(--color-danger-bg); }
 
 /* ===========================
-   App layout (FIXED BLANK SPACE)
+   App Layout
 =========================== */
-.app-layout {
-    display: flex !important;
-    justify-content: flex-start !important;
-    align-items: stretch !important;
+.app-layout { 
+    display: flex; 
+    min-height: 100vh; 
+    width: 100%;
+    background: var(--color-bg);
 }
 
 .sidebar {
@@ -255,18 +260,19 @@ form input:focus, form select:focus, form textarea:focus {
 .logout-btn:hover { background: rgba(193, 68, 60, 0.18); color: #fff; }
 
 .main-content {
-    flex: 1 !important;
-    margin-left: 0 !important; /* Removes unwanted left displacement */
-    margin-right: 0 !important;
-    padding-left: 24px !important; /* Standard spacing from sidebar */
-    align-items: flex-start !important; /* Stops children from pushing right */
-    width: auto !important;
+    flex: 1;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: auto; 
+    width: 100%;
 }
 
-
-.main-content > * {
-    margin-left: 0 !important; /* Prevents auto margins on child containers */
-    width: 100% !important;
+.main-content > *:not(.app-footer) {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .topbar {
@@ -296,7 +302,7 @@ form input:focus, form select:focus, form textarea:focus {
 }
 
 /* ===========================
-   Stat cards
+   Stat Cards
 =========================== */
 .stats-grid {
     display: grid;
@@ -323,13 +329,13 @@ form input:focus, form select:focus, form textarea:focus {
 }
 
 /* ===========================
-   Panels (Dashboard Grid Fix)
+   Panels
 =========================== */
 .dashboard-panels { 
     display: grid; 
     grid-template-columns: 2fr 1fr; 
     gap: 16px; 
-    align-items: start;
+    align-items: stretch;
     width: 100%;
 }
 
@@ -352,7 +358,7 @@ form input:focus, form select:focus, form textarea:focus {
 .panel .data-table th, .panel .data-table td { padding: 6px 8px; font-size: 11px; }
 
 /* ===========================
-   Toolbar (Search + Filters)
+   Toolbar
 =========================== */
 .toolbar { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; width: 100%; }
 .toolbar input, .toolbar select {
@@ -373,7 +379,7 @@ form input:focus, form select:focus, form textarea:focus {
 .toolbar select { cursor: pointer; }
 
 /* ===========================
-   Tables (Smaller Fonts & Clean Layout)
+   Tables
 =========================== */
 .data-table {
     width: 100%;
@@ -466,8 +472,8 @@ form input:focus, form select:focus, form textarea:focus {
    Footer
 =========================== */
 .app-footer {
-    margin-top: auto;
-    padding-top: 16px;
+    margin-top: 24px;
+    padding-bottom: 16px;
     text-align: center;
     font-size: 10px;
     color: var(--color-text-muted);
