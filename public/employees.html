@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees - Employee Task Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <nav class="sidebar">
+            <h2 class="sidebar-title">ETMS</h2>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="employees.html" class="nav-link active">Employees</a>
+            <a href="tasks.html" class="nav-link">Tasks</a>
+            <button id="logoutBtn" class="nav-link logout-btn">Logout</button>
+        </nav>
+
+        <main class="main-content">
+            <header class="topbar">
+                <h1>Employees</h1>
+                <button id="addEmployeeBtn" class="btn-primary btn-small">+ Add Employee</button>
+            </header>
+
+            <div class="toolbar">
+                <input type="text" id="searchInput" placeholder="Search by name or email...">
+                <select id="departmentFilter">
+                    <option value="">All Departments</option>
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="">All Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+            <p class="msg" id="listMsg" style="display:none;"></p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th><th>Email</th><th>Phone</th><th>Department</th>
+                        <th>Designation</th><th>Status</th><th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTableBody"></tbody>
+            </table>
+        </main>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal-overlay" id="employeeModal" style="display:none;">
+        <div class="modal-box">
+            <h2 id="modalTitle">Add Employee</h2>
+            <p class="error-msg" id="formError" style="display:none;"></p>
+
+            <form id="employeeForm" novalidate>
+                <input type="hidden" id="employeeId">
+
+                <label for="full_name">Full Name</label>
+                <input type="text" id="full_name" required>
+                <span class="field-error" id="err_full_name"></span>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <span class="field-error" id="err_email"></span>
+
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit number">
+                <span class="field-error" id="err_phone"></span>
+
+                <label for="department">Department</label>
+                <select id="department" required>
+                    <option value="">Select department</option>
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+                <span class="field-error" id="err_department"></span>
+
+                <label for="designation">Designation</label>
+                <input type="text" id="designation">
+
+                <label for="date_joined">Date Joined</label>
+                <input type="date" id="date_joined">
+
+                <label for="status">Status</label>
+                <select id="status">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/employees.js"></script>
+</body>
+</html>

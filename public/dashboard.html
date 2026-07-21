@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Employee Task Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <nav class="sidebar">
+            <h2 class="sidebar-title">ETMS</h2>
+            <a href="dashboard.html" class="nav-link active">Dashboard</a>
+            <a href="employees.html" class="nav-link">Employees</a>
+            <a href="tasks.html" class="nav-link">Tasks</a>
+            <button id="logoutBtn" class="nav-link logout-btn">Logout</button>
+        </nav>
+
+        <main class="main-content">
+            <header class="topbar">
+                <h1>Dashboard</h1>
+                <span id="adminName"></span>
+            </header>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <p class="stat-label">Total Employees</p>
+                    <p class="stat-value" id="totalEmployees">-</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Total Tasks</p>
+                    <p class="stat-value" id="totalTasks">-</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Pending Tasks</p>
+                    <p class="stat-value" id="pendingTasks">-</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-label">Completed Tasks</p>
+                    <p class="stat-value" id="completedTasks">-</p>
+                </div>
+            </section>
+
+            <section class="dashboard-panels">
+                <div class="panel">
+                    <h3>Tasks Due Soon</h3>
+                    <table class="data-table" id="dueSoonTable">
+                        <thead>
+                            <tr><th>Task</th><th>Assigned To</th><th>Due Date</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div class="panel">
+                    <h3>Employees Without Tasks</h3>
+                    <ul id="noTaskList" class="simple-list"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

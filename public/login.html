@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Employee Task Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+    <main class="login-box">
+        <h1>Employee Task Management</h1>
+        <h2>Admin Login</h2>
+
+        <p class="error-msg" id="serverError" style="display:none;"></p>
+
+        <form id="loginForm" novalidate>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <span class="field-error" id="emailError"></span>
+
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" required>
+                <button type="button" id="togglePassword">Show</button>
+            </div>
+            <span class="field-error" id="passwordError"></span>
+
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+    </main>
+
+    <script src="js/validation.js"></script>
+</body>
+</html>
