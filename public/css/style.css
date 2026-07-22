@@ -52,7 +52,7 @@ body {
 .logo-hex {
     width: 28px;
     height: 28px;
-    background: var(--color-primary);
+    background: #bcf511;
     clip-path: circle(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     display: flex;
     align-items: center;
@@ -60,7 +60,7 @@ body {
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 11px;
-    color: var(--color-sidebar);
+    color: #020202;
     flex-shrink: 0;
 }
 .logo-text {
@@ -248,7 +248,7 @@ form input:focus, form select:focus, form textarea:focus {
 .nav-link:hover { background: var(--color-sidebar-hover); color: #fff; }
 .nav-link.active { background: var(--color-primary); color: #fff; font-weight: 600; }
 
-.logout-btn { margin-top: auto; color: #E8837A; }
+.logout-btn { margin-top: auto; color: #e01604; }
 .logout-btn:hover { background: rgba(193, 68, 60, 0.18); color: #fff; }
 
 .main-content {
