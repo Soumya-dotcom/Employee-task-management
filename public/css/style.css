@@ -93,7 +93,9 @@ body {
 }
 
 .login-box .logo-mark { margin-bottom: 16px; }
-.login-box .logo-text { color: var(--color-sidebar); font-size: 15px; }
+.login-box .logo-text { 
+    color: var(--color-sidebar); 
+    font-size: 15px; }
 .login-box h2 {
     font-size: 11px;
     font-weight: 500;
@@ -145,9 +147,17 @@ form input:focus, form select:focus, form textarea:focus {
     font-weight: 600;
     color: var(--color-text-muted);
 }
-.password-wrapper button:hover { background: var(--color-sidebar); color: #fff; }
+.password-wrapper button:hover { 
+    background: var(--color-sidebar); 
+    color: #fff; }
 
-.field-error { color: var(--color-danger); font-size: 10px; display: block; min-height: 14px; margin-top: 2px; }
+.field-error { 
+    color: var(--color-danger); 
+    font-size: 10px; 
+    display: block; 
+    min-height: 14px; 
+    margin-top: 2px; 
+}
 .error-msg {
     background: var(--color-danger-bg);
     color: var(--color-danger);
@@ -189,7 +199,11 @@ form input:focus, form select:focus, form textarea:focus {
     font-weight: 600;
     font-size: 11px;
 }
-.btn-secondary:hover { background: var(--color-bg); border-color: var(--color-text-muted); }
+.btn-secondary:hover { 
+    background: var(--color-bg); 
+    border-color: 
+    var(--color-text-muted); 
+}
 
 .btn-link {
     background: none;
@@ -206,17 +220,15 @@ form input:focus, form select:focus, form textarea:focus {
     background: none;
     text-decoration: underline;
     color: #1D4ED8;
- }
+}
 .btn-danger { color: var(--color-danger); }
 .btn-danger:hover { 
     background: none;
     text-decoration: underline;
     color: #A83831;
- }
+}
 
-/* ===========================
-   App Layout
-=========================== */
+/* App Layout */
 .app-layout { 
     display: flex; 
     min-height: 100vh; 
@@ -259,22 +271,27 @@ form input:focus, form select:focus, form textarea:focus {
     transition: background 0.15s ease, color 0.15s ease;
     font-family: var(--font-body);
 }
-.nav-link:hover { background: var(--color-sidebar-hover); color: #fff; }
-.nav-link.active { background: var(--color-primary); color: #fff; font-weight: 600; }
+.nav-link:hover { 
+    background: var(--color-sidebar-hover); 
+    color: #fff; 
+}
+.nav-link.active { 
+    background: var(--color-primary); 
+    color: #fff; 
+    font-weight: 600; 
+}
 
-/* ===========================
-   Logout Button (Square Style)
-=========================== */
+/* Logout Button */
 .logout-btn { 
     margin-top: auto; 
     margin-left: 12px;
     margin-right: 12px;
     width: calc(100% - 24px);
     padding: 9px 14px;
-    background: var(--color-danger); /* Solid red/crimson background */
-    color: #FFFFFF !important;       /* High-contrast white text */
+    background: var(--color-danger); 
+    color: #FFFFFF !important;       
     border: none;
-    border-radius: 6px;              /* Clean square box with subtle rounded corners */
+    border-radius: 6px;              
     font-size: 12px;
     font-weight: 600;
     text-align: center;
@@ -284,7 +301,7 @@ form input:focus, form select:focus, form textarea:focus {
 }
 
 .logout-btn:hover { 
-    background: #A83831;             /* Slightly darker shade on hover */
+    background: #A83831;             
     color: #FFFFFF !important;
 }
 
@@ -475,9 +492,12 @@ form input:focus, form select:focus, form textarea:focus {
 
 /* Modal */
 .modal-overlay {
-    position: fixed; inset: 0;
+    position: fixed; 
+    inset: 0;
     background: rgba(22, 48, 43, 0.55);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
     z-index: 100;
     backdrop-filter: blur(2px);
 }
@@ -491,13 +511,46 @@ form input:focus, form select:focus, form textarea:focus {
     box-shadow: var(--shadow-lg);
     border-top: 3px solid var(--color-primary);
 }
-.modal-box h2 { font-family: var(--font-display); font-size: 15px; color: var(--color-sidebar); margin-bottom: 12px; }
-.modal-box label { display: block; margin: 10px 0 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--color-text-muted); }
-.modal-box textarea { width: 100%; padding: 8px; border: 1px solid var(--color-border); border-radius: 6px; font-size: 11px; font-family: var(--font-body); resize: vertical; }
-#charCount { font-weight: 400; color: var(--color-text-muted); font-size: 9px; }
+.modal-box h2 { 
+    font-family: var(--font-display); 
+    font-size: 15px; color: 
+    var(--color-sidebar); 
+    margin-bottom: 12px; 
+}
+.modal-box label { 
+    display: block; 
+    margin: 10px 0 4px; 
+    font-size: 10px; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 0.4px; 
+    color: var(--color-text-muted); 
+}
+.modal-box textarea { 
+    width: 100%; 
+    padding: 8px; 
+    border: 1px solid var(--color-border); 
+    border-radius: 6px; 
+    font-size: 11px; 
+    font-family: var(--font-body); 
+    resize: vertical; 
+}
+#charCount { 
+    font-weight: 400; 
+    color: var(--color-text-muted); 
+    font-size: 9px; 
+}
 
-.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
-.modal-actions button { width: auto; padding: 7px 14px; margin: 0; }
+.modal-actions { 
+    display: flex; 
+    justify-content: flex-end; 
+    gap: 8px; 
+    margin-top: 16px; 
+}
+.modal-actions button { 
+    width: auto; 
+    padding: 7px 14px; 
+    margin: 0; }
 
 /* Footer */
 .app-footer {

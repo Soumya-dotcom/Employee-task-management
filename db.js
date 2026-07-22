@@ -1,3 +1,4 @@
+/* Database connection & Pool management modeule */ 
 require('dotenv').config();
 const mysql = require('mysql2/promise');
 

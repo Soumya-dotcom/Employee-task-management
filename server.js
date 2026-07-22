@@ -7,6 +7,7 @@ const pool = require('./db');
 
 const app = express();
 
+// request payload handling
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -24,8 +25,12 @@ function requireLogin(req, res, next) {
     next();
 }
 
+//Authentication Module
+
 app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
+
+    //Validate parameters
 
     if (!email || !password) {
         return res.status(400).json({ success: false, message: "Both fields are required." });
@@ -64,7 +69,7 @@ app.get('/api/me', requireLogin, (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-// DASHBOARD STATS
+// Dashbooard statistics
 app.get('/api/dashboard-stats', requireLogin, async (req, res) => {
     try {
         const [[employeeCount]] = await pool.query("SELECT COUNT(*) AS total FROM employees");
@@ -80,18 +85,18 @@ app.get('/api/dashboard-stats', requireLogin, async (req, res) => {
 
         const [dueSoon] = await pool.query(
             `SELECT t.title, t.due_date, e.full_name
-             FROM tasks t
-             LEFT JOIN employees e ON t.employee_id = e.id
-             WHERE t.due_date >= CURDATE() AND t.status != 'Completed'
-             ORDER BY t.due_date ASC
-             LIMIT 5`
+            FROM tasks t
+            LEFT JOIN employees e ON t.employee_id = e.id
+            WHERE t.due_date >= CURDATE() AND t.status != 'Completed'
+            ORDER BY t.due_date ASC
+            LIMIT 5`
         );
 
         const [employeesWithoutTasks] = await pool.query(
             `SELECT e.id, e.full_name
-             FROM employees e
-             LEFT JOIN tasks t ON e.id = t.employee_id
-             WHERE t.id IS NULL`
+            FROM employees e
+            LEFT JOIN tasks t ON e.id = t.employee_id
+            WHERE t.id IS NULL`
         );
 
         res.json({
@@ -116,9 +121,9 @@ app.get('/dashboard.html', (req, res, next) => {
     next();
 });
 
-// ===== EMPLOYEES CRUD =====
+// EMPLOYEES CRUD OPERATIONS
 
-// GET all employees (with search + filter)
+// GET all employees (with search and filter)
 app.get('/api/employees', requireLogin, async (req, res) => {
     try {
         const { search, department, status } = req.query;
@@ -178,8 +183,7 @@ app.post('/api/employees', requireLogin, async (req, res) => {
         }
 
         await pool.query(
-            `INSERT INTO employees (full_name, email, phone, department, designation, date_joined, status)
-             VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            `INSERT INTO employees (full_name, email, phone, department, designation, date_joined, status) VALUES (?, ?, ?, ?, ?, ?, ?)`,
             [full_name, email, phone || null, department, designation || null, date_joined || null, status || 'Active']
         );
 
@@ -210,8 +214,7 @@ app.put('/api/employees/:id', requireLogin, async (req, res) => {
         }
 
         await pool.query(
-            `UPDATE employees SET full_name=?, email=?, phone=?, department=?, designation=?, date_joined=?, status=?
-             WHERE id=?`,
+            `UPDATE employees SET full_name=?, email=?, phone=?, department=?, designation=?, date_joined=?, status=? WHERE id=?`,
             [full_name, email, phone || null, department, designation || null, date_joined || null, status, id]
         );
 
@@ -233,9 +236,9 @@ app.delete('/api/employees/:id', requireLogin, async (req, res) => {
     }
 });
 
-// ===== TASKS CRUD =====
+// TASKS CRUD OPERATIONS
 
-// GET all tasks (search, filter, sort) + employee name via JOIN
+// GET all tasks (search, filter, sort)  employee name via JOIN
 app.get('/api/tasks', requireLogin, async (req, res) => {
     try {
         const { search, status, priority, sortBy, order } = req.query;
@@ -301,7 +304,7 @@ app.post('/api/tasks', requireLogin, async (req, res) => {
 
         await pool.query(
             `INSERT INTO tasks (title, description, employee_id, priority, status, due_date)
-             VALUES (?, ?, ?, ?, ?, ?)`,
+            VALUES (?, ?, ?, ?, ?, ?)`,
             [title, description || null, employee_id || null, priority || 'Medium', status || 'Pending', due_date]
         );
 
@@ -324,7 +327,7 @@ app.put('/api/tasks/:id', requireLogin, async (req, res) => {
 
         await pool.query(
             `UPDATE tasks SET title=?, description=?, employee_id=?, priority=?, status=?, due_date=?
-             WHERE id=?`,
+            WHERE id=?`,
             [title, description || null, employee_id || null, priority, status, due_date, id]
         );
 
